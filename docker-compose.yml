@@ -1,12 +1,13 @@
 version: '3'
 
 services:
-  thredds-quickstart:
-    image: unidata/thredds-docker:5.8
-    ports:
-      - "80:8080"
-      - "443:8443"
-      - "8443:8443"
+  # thredds-quickstart:
+  #   image: unidata/thredds-docker:5.8
+  #   ports:
+  #     - "80:8080"
+  #     - "443:8443"
+  #     - "8443:8443"
+  #   container_name: quickstart
 
   thredds-production:
     image: unidata/thredds-docker:5.8
@@ -18,12 +19,12 @@ services:
     volumes:
       - /path/to/your/tomcat/logs/:/usr/local/tomcat/logs/
       - /path/to/your/thredds/logs/:/usr/local/tomcat/content/thredds/logs/
-      - /path/to/your/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+      - ~/thredds-docker/files/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
       - /path/to/your/thredds/directory:/usr/local/tomcat/content/thredds
       - /path/to/your/data/directory1:/path/to/your/data/directory1
       - /path/to/your/data/directory2:/path/to/your/data/directory2
     env_file:
-      - "compose${THREDDS_COMPOSE_ENV_LOCAL}.env"
+      - "compose.env" #"compose${THREDDS_COMPOSE_ENV_LOCAL}.env"
 
   ###
   # TDM
@@ -31,11 +32,11 @@ services:
   # https://github.com/Unidata/tdm-docker
   ###
 
-  tdm:
-    image: unidata/tdm-docker:latest
-    container_name: tdm
-    volumes:
-      - /path/to/your/thredds/directory:/usr/local/tomcat/content/thredds
-      - /path/to/your/data/directory1:/path/to/your/data/directory1
-    env_file:
-      - "compose${THREDDS_COMPOSE_ENV_LOCAL}.env"
+  # tdm:
+  #   image: unidata/tdm-docker:latest
+  #   container_name: tdm
+  #   volumes:
+  #     - /path/to/your/thredds/directory:/usr/local/tomcat/content/thredds
+  #     - /path/to/your/data/directory1:/path/to/your/data/directory1
+  #   env_file:
+  #     - "compose.env" #"compose${THREDDS_COMPOSE_ENV_LOCAL}.env"
