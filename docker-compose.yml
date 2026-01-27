@@ -37,4 +37,4 @@ services:
     #  - /path/to/your/thredds/directory:/usr/local/tomcat/content/thredds
      # - /path/to/your/data/directory1:/path/to/your/data/directory1
     # env_file:
-    #  - "compose.env" #q"${THREDDS_COMPOSE_ENV_LOCAL}.env"
+    #  - "compose.env" #q "${THREDDS_COMPOSE_ENV_LOCAL}.env"
