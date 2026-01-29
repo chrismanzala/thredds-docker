@@ -20,7 +20,7 @@ services:
       - /path/to/your/tomcat/logs/:/usr/local/tomcat/logs/
       - /path/to/your/thredds/logs/:/usr/local/tomcat/content/thredds/logs/
       - ~/thredds-docker/files/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
-      - /path/to/your/thredds/directory:/usr/local/tomcat/content/thredds
+      - ~/thredds-docker:/usr/local/tomcat/content/thredds
       - /path/to/your/data/directory1:/path/to/your/data/directory1
       - /path/to/your/data/directory2:/path/to/your/data/directory2
     env_file:
