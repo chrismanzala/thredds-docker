@@ -21,7 +21,7 @@ services:
       - ~/thredds-docker/files/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
       - ~/thredds-docker/files/threddsConfig.xml:/usr/local/tomcat/content/thredds/threddsConfig.xml
       - ~/thredds-docker/content/thredds:/usr/local/tomcat/content/thredds
-      - ~/thredds-docker/data:/usr/local/tomcat/content/data/
+      - ~/thredds-docker/data:/usr/local/tomcat/content/data
     env_file:
       - "compose.env" #"${THREDDS_COMPOSE_ENV_LOCAL}.env"
 
