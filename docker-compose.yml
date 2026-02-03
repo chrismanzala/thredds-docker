@@ -16,11 +16,12 @@ services:
       - "8443:8443"
     container_name: thredds
     volumes:
-      - ~/thredds-prod/tomcat-logs/:/usr/local/tomcat/logs/
-      - ~/thredds-prod/thredds-logs/:/usr/local/tomcat/content/thredds/logs/
+      - ~/thredds-docker/tomcat/logs/:/usr/local/tomcat/logs/
+      - ~/thredds-docker/content/thredds/logs/:/usr/local/tomcat/content/thredds/logs/
       - ~/thredds-docker/files/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
-      - ~/thredds-prod/thredds-content:/usr/local/tomcat/content/thredds
-      - ~/thredds-prod/data:/data
+      - ~/thredds-docker/files/threddsConfig.xml:/usr/local/tomcat/content/thredds/threddsConfig.xml
+      - ~/thredds-docker/content/thredds:/usr/local/tomcat/content/thredds
+      - ~/thredds-docker/data:/usr/local/tomcat/content/data/
     env_file:
       - "compose.env" #"${THREDDS_COMPOSE_ENV_LOCAL}.env"
 
