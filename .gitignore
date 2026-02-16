@@ -1,2 +1,10 @@
-content/
+tomcat/
+img/
 *.swp
+data/
+logs/
+*.log
+*.tmp
+*.bak
+*.cache
+*.env

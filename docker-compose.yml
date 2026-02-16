@@ -17,11 +17,12 @@ services:
     container_name: thredds
     volumes:
       - ~/thredds-docker/tomcat/logs/:/usr/local/tomcat/logs/
-      - ~/thredds-docker/content/thredds/logs/:/usr/local/tomcat/content/thredds/logs/
+      # - ~/thredds-docker/tomcat/content/thredds/logs/:/usr/local/tomcat/content/thredds/logs/
       - ~/thredds-docker/files/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
-      - ~/thredds-docker/files/threddsConfig.xml:/usr/local/tomcat/content/thredds/threddsConfig.xml
-      - ~/thredds-docker/content/thredds:/usr/local/tomcat/content/thredds
-      - ~/thredds-docker/data:/usr/local/tomcat/content/data
+      # - ~/thredds-docker/files/threddsConfig.xml:/usr/local/tomcat/content/thredds/threddsConfig.xml
+      - ~/thredds-docker/tomcat/content/thredds/:/usr/local/tomcat/content/thredds/
+      - ~/thredds-docker/tomcat/data/:/usr/local/tomcat/data/
+      # - ~/thredds-docker/tomcat/webapps/thredds/:/usr/local/tomcat/webapps/thredds/
     env_file:
       - "compose.env" #"${THREDDS_COMPOSE_ENV_LOCAL}.env"
 

@@ -35,7 +35,7 @@ services:
       - "443:8443"
       - "8443:8443"
     env_file:
-      - "compose_local.env"
+      - "compose.env"
     secrets:
       - source: thredds_tomcat_users
         target: /usr/local/tomcat/conf/tomcat-users.xml
