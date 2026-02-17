@@ -1,10 +1,26 @@
-tomcat/
-!tomcat/content/thredds/catalog.xml
-!tomcat/content/thredds/enhancedCatalog.xml
-!tomcat/content/thredds/threddsConfig.xml
+# Do not follow the webapps directory, which contains the thredds application
+tomcat/webapps/thredds/*
+# Do not logs
+tomcat/content/thredds/logs/*
+tomcat/logs/*
+tomcat/bin/*.log
+# Do not follow temp
+tomcat/temp/*
+# Do not follow cache, javaUtilPrefs, state, and h2 database
+tomcat/content/thredds/cache/*
+tomcat/content/thredds/javaUtilPrefs/*
+tomcat/content/thredds/state/*
+tomcat/content/thredds/cache/**/.h2/
+# Do not follow test data, notebooks, templates, wms styles
+tomcat/content/thredds/public/*
+tomcat/content/thredds/notebooks/*
+tomcat/content/thredds/templates/*
+tomcat/content/thredds/wmsStyles/*
+
+# Do not follow images, swap files, logs, temp files, backup files, cache files, environment files
 img/
 *.swp
-data/
+tomcat/data/*
 logs/
 *.log
 *.tmp
