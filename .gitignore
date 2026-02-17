@@ -1,4 +1,7 @@
 tomcat/
+!tomcat/content/thredds/catalog.xml
+!tomcat/content/thredds/enhancedCatalog.xml
+!tomcat/content/thredds/threddsConfig.xml
 img/
 *.swp
 data/
