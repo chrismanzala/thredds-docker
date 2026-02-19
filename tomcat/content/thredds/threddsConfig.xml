@@ -5,8 +5,8 @@
   <!-- see https://www.unidata.ucar.edu/software/thredds/current/tds/reference/ThreddsConfigXMLFile.html -->
  <serverInformation>
     <name>Galilee TDS</name>
-    <logoUrl>/thredds/img/Energy_Lab.png</logoUrl>
-    <logoAltText>Logo ENERGY-Lab</logoAltText>
+    <logoUrl>/thredds/img/Logo_IOS-net.png</logoUrl>
+    <logoAltText>Logo IOS-net</logoAltText>
 
     <abstract>
       Scientific data of ENERGY-lab.
