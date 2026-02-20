@@ -17,7 +17,7 @@
     <service name="cdmremote" serviceType="CdmRemote" base="/thredds/cdmremote/"/>
   </service>
 
-  <datasetRoot path="test" location="content/testdata/" />
+  <datasetRoot path="data" location="content/data/"/>
 
   <catalogRef xlink:title="LIGHTEN-IO" xlink:href="public/catalog/input_output_enhancedCatalog.xml" name="lighten-io"/>
   <catalogRef xlink:title="OTHER" xlink:href="" name=""/>

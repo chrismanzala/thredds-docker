@@ -12,7 +12,7 @@ tomcat/content/thredds/javaUtilPrefs/*
 tomcat/content/thredds/state/*
 tomcat/content/thredds/cache/**/.h2/
 # Do not follow test data, notebooks, templates, wms styles
-tomcat/content/thredds/public/*
+tomcat/content/thredds/public/data/*
 tomcat/content/thredds/notebooks/*
 tomcat/content/thredds/templates/*
 tomcat/content/thredds/wmsStyles/*

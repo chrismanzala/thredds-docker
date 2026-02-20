@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="http://www.unidata.ucar.edu/namespaces/thredds/InvCatalog/v1.0" xmlns:xlink="http://www.w3.org/1999/xlink" 
+   name="Unidata THREDDS-IDD NetCDF-OpenDAP Server" version="1.0.1">
+
+
+  <dataset name="INPUT" serviceName="all" urlPath="INPUT/" dataType="Grid">
+    <metadata inherited="true">
+      <!--authority>edu.ucar.unidata</authority>
+      <dataType>Grid</dataType>
+      <dataFormat>NetCDF</dataFormat>
+      <documentation type="rights">Freely available</documentation>
+      <documentation xlink:href="http://www.emc.ncep.noaa.gov/modelinfo/index.html" xlink:title="NCEP Model documentation"></documentation>
+      <creator>
+        <name vocabulary="DIF">DOC/NOAA/NWS/NCEP</name>
+        <contact url="http://www.ncep.noaa.gov/" email="http://www.ncep.noaa.gov/mail_liaison.shtml" />
+      </creator>
+      <publisher>
+        <name vocabulary="DIF">UCAR/UNIDATA</name>
+        <contact url="https://www.unidata.ucar.edu/" email="support@unidata.ucar.edu" />
+      </publisher>
+      <timeCoverage>
+        <end>present</end>
+        <duration>14 days</duration>
+      </timeCoverage-->
+    </metadata>
+      <catalogRef xlink:title="GCM" xlink:href="input_catalog/gcm_enhancedCatalog.xml" name="gcm"/>
+      <catalogRef xlink:title="RCM" xlink:href="input_catalog/rcm_enhancedCatalog.xml" name="rcm"/>
+  </dataset>
+
+  <dataset name="OUTPUT" serviceName="all" urlPath="OUTPUT/" dataType="Grid">
+    <metadata inherited="true">
+      <!--authority>edu.ucar.unidata</authority>
+      <dataType>Grid</dataType>
+      <dataFormat>NetCDF</dataFormat>
+      <documentation type="rights">Freely available</documentation>
+      <documentation xlink:href="http://www.emc.ncep.noaa.gov/modelinfo/index.html" xlink:title="NCEP Model documentation"></documentation>
+      <creator>
+        <name vocabulary="DIF">DOC/NOAA/NWS/NCEP</name>
+        <contact url="http://www.ncep.noaa.gov/" email="http://www.ncep.noaa.gov/mail_liaison.shtml" />
+      </creator>
+      <publisher>
+        <name vocabulary="DIF">UCAR/UNIDATA</name>
+        <contact url="https://www.unidata.ucar.edu/" email="support@unidata.ucar.edu" />
+      </publisher>
+      <timeCoverage>
+        <end>present</end>
+        <duration>14 days</duration>
+      </timeCoverage-->
+    </metadata>
+      <catalogRef xlink:title="RCM" xlink:href="output_catalog/rcm_enhancedCatalog.xml" name="rcm"/>
+  </dataset>
+</catalog>
