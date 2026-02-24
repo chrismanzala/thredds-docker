@@ -23,7 +23,83 @@
         <duration>14 days</duration>
       </timeCoverage-->
     </metadata>
-      <catalogRef xlink:title="NetCDF" xlink:href="rcm_netcdf_data_enhancedCatalog.xml" name="netcdf"/>
-      <catalogRef xlink:title="csv" xlink:href="rcm_csv_data_enhancedCatalog.xml" name="csv"/>
+    <datasetScan name="Réunion" ID="input_rcm_reunion"
+            path="input/rcm/reunion" location="content/data/rcm/reunion_netcdf"
+            harvest="true">
+      <metadata inherited="true">
+        <!--documentation type="summary">NCEP North American Model : AWIPS 211 (Q) Regional - CONUS (Lambert Conformal). Model runs are made at 12Z and 00Z, with analysis and forecasts every 6 hours out to 60 hours. Horizontal = 93 by 65 points, resolution 81.27 km, LambertConformal projection. Vertical = 1000 to 100 hPa pressure levels.</documentation-->
+        <serviceName>all</serviceName>
+        <!--geospatialCoverage>
+          <northsouth>
+            <start>26.92475</start>
+            <size>15.9778</size>
+            <units>degrees_north</units>
+          </northsouth>
+          <eastwest>
+            <start>-135.33123</start>
+            <size>103.78772</size>
+            <units>degrees_east</units>
+          </eastwest>
+          <updown>
+            <start>0.0</start>
+            <size>0.0</size>
+            <units>km</units>
+          </updown>
+        </geospatialCoverage-->
+      </metadata>
+
+      <!--filter>
+        <include wildcard="*eta_211.nc" />
+      </filter-->
+
+      <sort>
+        <lexigraphicByName increasing="false"/>
+      </sort>
+      <addLatest/>
+
+      <addTimeCoverage datasetNameMatchPattern="([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})_eta_211.nc$"
+                      startTimeSubstitutionPattern="$1-$2-$3T$4:00:00"
+                      duration="60 hours" />
+    </datasetScan>
+    <datasetScan name="Maurice" ID="input_rcm_maurice"
+            path="input/rcm/maurice" location="content/data/rcm/maurice_netcdf"
+            harvest="true">
+      <metadata inherited="true">
+        <!--documentation type="summary">NCEP North American Model : AWIPS 211 (Q) Regional - CONUS (Lambert Conformal). Model runs are made at 12Z and 00Z, with analysis and forecasts every 6 hours out to 60 hours. Horizontal = 93 by 65 points, resolution 81.27 km, LambertConformal projection. Vertical = 1000 to 100 hPa pressure levels.</documentation-->
+        <serviceName>all</serviceName>
+        <!--geospatialCoverage>
+          <northsouth>
+            <start>26.92475</start>
+            <size>15.9778</size>
+            <units>degrees_north</units>
+          </northsouth>
+          <eastwest>
+            <start>-135.33123</start>
+            <size>103.78772</size>
+            <units>degrees_east</units>
+          </eastwest>
+          <updown>
+            <start>0.0</start>
+            <size>0.0</size>
+            <units>km</units>
+          </updown>
+        </geospatialCoverage-->
+      </metadata>
+
+      <!--filter>
+        <include wildcard="*eta_211.nc" />
+      </filter-->
+
+      <sort>
+        <lexigraphicByName increasing="false"/>
+      </sort>
+      <addLatest/>
+
+      <addTimeCoverage datasetNameMatchPattern="([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})_eta_211.nc$"
+                      startTimeSubstitutionPattern="$1-$2-$3T$4:00:00"
+                      duration="60 hours" />
+    </datasetScan>
+      <!--catalogRef xlink:title="NetCDF" xlink:href="rcm_netcdf_data_enhancedCatalog.xml" name="netcdf"/>
+      <catalogRef xlink:title="csv" xlink:href="rcm_csv_data_enhancedCatalog.xml" name="csv"/-->
   </dataset>
 </catalog>
