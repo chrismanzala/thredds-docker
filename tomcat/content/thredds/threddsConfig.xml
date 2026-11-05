@@ -2,8 +2,8 @@
 <threddsConfig>
 
   <!-- all options are commented out in standard install - meaning use default values -->
-  <!-- see https://www.unidata.ucar.edu/software/thredds/current/tds/reference/ThreddsConfigXMLFile.html -->
- <serverInformation>
+  <!-- see https://docs.unidata.ucar.edu/tds/5.8/userguide/tds_config_ref.html -->
+  <serverInformation>
     <name>Galilee TDS</name>
     <logoUrl>/thredds/img/Logo_IOS-net.png</logoUrl>
     <logoAltText>Logo IOS-net</logoAltText>
@@ -17,11 +17,11 @@
       in a variety of interoperable data services and output formats.
     </abstract>
 
-    <keyword>
+    <keywords>
       SOLAR IRRADIANCE, SOLAR ACTIVITY, PYRANOMETERS, RECORDERS/LOGGERS, DATA NETWORKING/DATA TRANSFER TOOLS,
       AIR TEMPERATURE, ATMOSPHERIC PRESSURE MEASUREMENTS, HUMIDITY, WIND DIRECTION, WIND SPEED,
       INDIAN OCEAN, REUNION, COMOROS, MADAGASCAR, MAURITIUS, SEYCHELLES
-    </keyword>
+    </keywords>
 
     <contact>
       <name>Support</name>
@@ -65,7 +65,7 @@
      <standardCssUrl>tds.css</standardCssUrl>
      <catalogCssUrl>tdsCat.css</catalogCssUrl>
      <!--datasetCssUrl>dataset.css</datasetCssUrl-->
-     <openDapCssUrl>openDap.css</openDapCssUrl>
+     <openDapCssUrl>tdsDap.css</openDapCssUrl>
     
 
     <!--

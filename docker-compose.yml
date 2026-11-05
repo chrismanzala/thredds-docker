@@ -1,42 +1,53 @@
-#version: '3'
+###
+# THREDDS Data Server (TDS)
+#
+# Configuration lives in ./tomcat/content/thredds, which is bind-mounted over
+# the image's content root. That mount is authoritative: catalog.xml,
+# threddsConfig.xml, wmsConfig.xml and public/ are all read from the repo, so
+# a `docker compose restart` is enough to pick up catalog changes.
+#
+# Files under ./files are only used when building the local Dockerfile; the
+# running service uses the upstream image below.
+#
+# HTTPS is not served directly. The image ships no SSL connector, so put a
+# reverse proxy in front of port 80 to terminate TLS.
+###
 
 services:
- # thredds-quickstart:
-  #  image: unidata/thredds-docker:5.8
-   # ports:
-    #  - "80:8080"
-     # - "443:8443"
-      #- "8443:8443"
-
   thredds-production:
     image: unidata/thredds-docker:5.8
+    container_name: thredds
     ports:
       - "80:8080"
-      - "443:8443"
-      - "8443:8443"
-    container_name: thredds
     volumes:
-      - ~/thredds-docker/tomcat/logs/:/usr/local/tomcat/logs/
-      # - ~/thredds-docker/tomcat/content/thredds/logs/:/usr/local/tomcat/content/thredds/logs/
-      - ~/thredds-docker/files/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
-      # - ~/thredds-docker/files/threddsConfig.xml:/usr/local/tomcat/content/thredds/threddsConfig.xml
-      - ~/thredds-docker/tomcat/content/thredds/:/usr/local/tomcat/content/thredds/
-      # - ~/thredds-docker/tomcat/data/:/usr/local/tomcat/data/
-      # - ~/thredds-docker/tomcat/webapps/thredds/:/usr/local/tomcat/webapps/thredds/
+      - ./tomcat/logs/:/usr/local/tomcat/logs/
+      - ./files/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+      - ./tomcat/content/thredds/:/usr/local/tomcat/content/thredds/
+      # Site logos referenced by <logoUrl> in threddsConfig.xml. Only certain
+      # files in content/thredds/public are auto-served, and subdirectories are
+      # not among them, so these are mounted into the webapp's static root and
+      # served at /thredds/img/.
+      - ./files/img/:/usr/local/tomcat/webapps/thredds/img/
+      # Serve data from outside the repo by mounting it and pointing a
+      # datasetScan/datasetRoot `location` at the container path:
+      # - /path/to/your/data:/usr/local/tomcat/data/
     env_file:
-      - "compose.env" #"${THREDDS_COMPOSE_ENV_LOCAL}.env"
+      - "compose.env" # or "${THREDDS_COMPOSE_ENV_LOCAL}.env"
+    restart: unless-stopped
 
   ###
   # TDM
-  # Not strictly part of this repo, but useful to have around
+  # Not strictly part of this repo, but useful to have around.
   # https://github.com/Unidata/tdm-docker
+  #
+  # The TDM builds indexes for GRIB featureCollections. This deployment serves
+  # NetCDF via datasetScan, so it is not needed unless GRIB is added.
   ###
-
-#  tdm:
- #   image: unidata/tdm-docker:5.8
-  #  container_name: tdm
-   # volumes:
-    #  - /path/to/your/thredds/directory:/usr/local/tomcat/content/thredds
-     # - /path/to/your/data/directory1:/path/to/your/data/directory1
-    # env_file:
-    #  - "compose.env" #q "${THREDDS_COMPOSE_ENV_LOCAL}.env"
+  # tdm:
+  #   image: unidata/tdm-docker:5.8
+  #   container_name: tdm
+  #   volumes:
+  #     - ./tomcat/content/thredds/:/usr/local/tomcat/content/thredds
+  #     - /path/to/your/data:/path/to/your/data
+  #   env_file:
+  #     - "compose.env"

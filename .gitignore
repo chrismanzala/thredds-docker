@@ -1,6 +1,6 @@
 # Do not follow the webapps directory, which contains the thredds application
 tomcat/webapps/thredds/*
-# Do not logs
+# Do not follow logs
 tomcat/content/thredds/logs/*
 tomcat/logs/*
 tomcat/bin/*.log
@@ -11,14 +11,16 @@ tomcat/content/thredds/cache/*
 tomcat/content/thredds/javaUtilPrefs/*
 tomcat/content/thredds/state/*
 tomcat/content/thredds/cache/**/.h2/
-# Do not follow test data, notebooks, templates, wms styles
+# Do not follow test data, notebooks, wms styles
 tomcat/content/thredds/public/data/*
 tomcat/content/thredds/notebooks/*
-tomcat/content/thredds/templates/*
 tomcat/content/thredds/wmsStyles/*
 
-# Do not follow images, swap files, logs, temp files, backup files, cache files, environment files
-img/
+# Scratch copies of the site logos. The copies actually served are in
+# files/img, which is mounted into the webapp at /thredds/img/ and is tracked.
+/img/
+
+# Do not follow swap files, logs, temp files, backup files, cache files
 *.swp
 tomcat/data/*
 logs/
@@ -26,4 +28,8 @@ logs/
 *.tmp
 *.bak
 *.cache
+
+# Local environment overrides (see THREDDS_COMPOSE_ENV_LOCAL in the README);
+# compose.env is the tracked default.
 *.env
+!compose.env

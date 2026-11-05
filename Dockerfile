@@ -97,10 +97,15 @@ RUN ldconfig
 COPY --from=builder /tmp/thredds/thredds ${CATALINA_HOME}/webapps/thredds/
 
 # ---- Your configs/scripts (from build context)
-COPY files/threddsConfig.xml ${CATALINA_HOME}/content/thredds/threddsConfig.xml
+# The live server configuration under tomcat/content/thredds is the single
+# source of truth; docker-compose bind-mounts that same directory over the
+# content root, so a local build and the upstream image stay in agreement.
+COPY tomcat/content/thredds/threddsConfig.xml ${CATALINA_HOME}/content/thredds/threddsConfig.xml
 COPY files/tomcat-users.xml  ${CATALINA_HOME}/conf/tomcat-users.xml
 COPY files/setenv.sh         ${CATALINA_HOME}/bin/setenv.sh
 COPY files/javaopts.sh       ${CATALINA_HOME}/bin/javaopts.sh
+# Site logos, served at /thredds/img/ (see logoUrl in threddsConfig.xml)
+COPY files/img/              ${CATALINA_HOME}/webapps/thredds/img/
 
 # ---- Ensure directories & permissions
 RUN mkdir -p ${CATALINA_HOME}/content/thredds && \

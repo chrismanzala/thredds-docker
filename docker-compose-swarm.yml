@@ -1,11 +1,5 @@
 ---
-version: '3.3'
-
 secrets:
-  thredds_tomcat_users:
-    file: ./files/tomcat-users.xml
-
-configs:
   thredds_tomcat_users:
     file: ./files/tomcat-users.xml
 
