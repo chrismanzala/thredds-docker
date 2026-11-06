@@ -1,0 +1,427 @@
+/*
+ * Galilee TDS / ENERGY-Lab custom theme
+ *
+ * Overrides the bundled /thredds/tds.css. THREDDS serves any file with this
+ * exact name placed in tds.content.root.path/thredds/public from the webapp
+ * root, so this file is picked up automatically -- no webapp rebuild needed.
+ * Loaded on every generated page via <standardCssUrl>tds.css</standardCssUrl>
+ * in threddsConfig.xml.
+ *
+ * Palette lifted from files/img/Logo_IOS-net.png: deep navy + solar orange.
+ * Class names below (header, footer, container, content, section-header,
+ * section-content, banner, property-table, tab-button, tab-content, static,
+ * subset) are fixed by the TDS-generated HTML and are not ours to rename.
+ */
+
+:root {
+  --navy-900: #0b2235;
+  --navy-700: #15416b;
+  --navy-600: #1c5585;
+  --navy-500: #2a6ea3;
+  --orange-500: #f39916;
+  --orange-600: #d97f06;
+  --gray-50:  #f4f6f8;
+  --gray-100: #e9edf1;
+  --gray-200: #dde3e8;
+  --gray-400: #9aa7b2;
+  --gray-600: #5b6b76;
+  --ink: #1b2a33;
+  --white: #ffffff;
+  --radius: 8px;
+  --shadow: 0 1px 3px rgba(11, 34, 53, 0.12), 0 1px 2px rgba(11, 34, 53, 0.08);
+  --font: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink);
+  background-color: var(--gray-100);
+}
+
+td {
+  font-family: var(--font);
+  font-size: 14px;
+  color: var(--ink);
+}
+
+/* TDS emits legacy <font size="+1"> tags in catalog table headers; make them
+   inherit normal typography instead of the browser's fixed HTML size scale. */
+font {
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+}
+
+b, strong {
+  font-weight: 600;
+  font-family: var(--font);
+}
+
+i, em {
+  font-style: italic;
+  font-family: var(--font);
+}
+
+h2 {
+  font-family: var(--font);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--navy-700);
+  margin: 0 0 0.3em;
+}
+
+h3, h4 {
+  font-family: var(--font);
+  color: var(--navy-700);
+}
+
+small {
+  font-family: var(--font);
+  font-size: 0.85rem;
+  color: var(--gray-600);
+}
+
+/* ---- links ---- */
+
+A:link, a:link {
+  font-family: var(--font);
+  color: var(--navy-600);
+  text-decoration: none;
+}
+
+a:visited {
+  font-family: var(--font);
+  color: var(--navy-500);
+}
+
+a:active {
+  font-family: var(--font);
+  color: var(--orange-600);
+}
+
+a:hover {
+  font-family: var(--font);
+  color: var(--orange-600);
+  text-decoration: underline;
+}
+
+/* header/footer links sit on a dark background and need to stay legible */
+a.static {
+  color: var(--white);
+  font-weight: 500;
+}
+
+a.static:visited {
+  color: var(--white);
+}
+
+a.static:hover {
+  color: var(--orange-500);
+  text-decoration: underline;
+}
+
+/* ---- page frame ---- */
+
+div.container {
+  background-color: var(--gray-100);
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+  padding: 10px 50px 32px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+div#header, div#footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, var(--navy-700), var(--navy-900));
+  padding: 10px 24px;
+  border: none;
+  box-sizing: border-box;
+  overflow: visible;
+  min-height: 48px;
+  box-shadow: var(--shadow);
+}
+
+div#header {
+  top: 0;
+  margin-bottom: 8px;
+  border-bottom: 3px solid var(--orange-500);
+}
+
+div#footer {
+  bottom: 0;
+  border-top: 3px solid var(--orange-500);
+}
+
+/* the webapp template wraps header/footer content in a single generic div;
+   turn it into a tidy flex row without needing to touch that markup */
+#header > div, #footer > div {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+#footer > div {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.header-logo {
+  float: none;
+  padding-top: 0;
+  display: flex;
+  align-items: center;
+}
+
+.header-logo img {
+  max-height: 36px;
+  width: auto;
+  display: block;
+}
+
+.header-info {
+  margin-left: 0;
+  padding-top: 0;
+}
+
+.header-info h2 {
+  color: var(--white);
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+#footer h4 {
+  color: var(--gray-200);
+  margin: 2px 0;
+  font-size: 0.85rem;
+  font-weight: normal;
+}
+
+#footer-buffer, #header-buffer {
+  background-color: transparent;
+  margin-top: 4px;
+}
+
+/* ---- banner / welcome block ---- */
+
+.banner {
+  padding: 16px 20px;
+  background: linear-gradient(135deg, var(--navy-600), var(--navy-500));
+  border: none;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 8px;
+}
+
+.banner > h2 {
+  color: var(--white);
+}
+
+.banner h3 {
+  color: var(--gray-100);
+  font-weight: normal;
+  margin: 4px 0 0;
+}
+
+.banner a {
+  color: var(--orange-500);
+}
+
+.banner a:hover {
+  color: var(--white);
+}
+
+/* ---- content cards ---- */
+
+div.content {
+  margin-top: 12px;
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+div.section-header {
+  background-color: var(--navy-700);
+  padding: 10px 16px;
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-left: 4px solid var(--orange-500);
+}
+
+div.section-content {
+  background-color: var(--white);
+  padding: 14px 16px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+div.button {
+  text-align: right;
+  padding: 8px 4px;
+}
+
+div.button a {
+  color: var(--navy-600);
+  font-weight: 500;
+}
+
+div.button a:hover {
+  color: var(--orange-600);
+}
+
+* {
+  word-wrap: break-word;
+}
+
+/* ---- catalog listing / property tables ---- */
+
+table {
+  border-collapse: collapse;
+}
+
+table[width="100%"] th {
+  background-color: var(--gray-50);
+  color: var(--navy-700);
+  font-weight: 600;
+  padding: 8px 10px;
+  border-bottom: 2px solid var(--gray-200);
+  text-align: left;
+}
+
+table[width="100%"] td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+tr.subset {
+  background-color: var(--white) !important;
+  transition: background-color 0.12s ease;
+}
+
+tr.subset:hover {
+  background-color: var(--gray-50) !important;
+}
+
+tr.subset td a {
+  color: var(--navy-600);
+  font-weight: 500;
+}
+
+tr.subset td code {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.92em;
+}
+
+table.property-table {
+  padding: 0;
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table.property-table > tbody > tr > td {
+  border: none;
+  border-bottom: 1px solid var(--gray-100);
+  padding: 7px 10px;
+  font-size: 0.92rem;
+}
+
+table.property-table > tbody > tr:first-child > th,
+table.property-table th {
+  background-color: var(--gray-50);
+  color: var(--navy-700);
+  padding: 7px 10px;
+  text-align: left;
+  border-bottom: 2px solid var(--gray-200);
+}
+
+table.property-table em {
+  color: var(--gray-600);
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* ---- Access / Preview tabs ---- */
+
+.tab-container {
+  background-color: var(--gray-50);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.button-pane {
+  margin-top: 0;
+  overflow: hidden;
+  background-color: var(--navy-700);
+}
+
+.tab-button {
+  background-color: var(--navy-700);
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  float: left;
+  color: var(--gray-200);
+  cursor: pointer;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+
+.tab-button:hover {
+  cursor: pointer;
+  color: var(--white);
+  background-color: var(--navy-600);
+}
+
+.tab-button.active {
+  background-color: var(--orange-500);
+  color: var(--navy-900);
+}
+
+.tab-content {
+  background-color: var(--white);
+  display: none;
+  padding: 14px 16px;
+  border: none;
+  min-height: 120px;
+}
+
+/* ---- responsive ---- */
+
+@media (max-width: 720px) {
+  div.container {
+    padding: 8px 14px 24px;
+  }
+
+  div#header, div#footer {
+    padding: 8px 14px;
+  }
+
+  .header-info h2 {
+    font-size: 1.05rem;
+  }
+
+  .tab-button {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
